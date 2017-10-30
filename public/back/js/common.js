@@ -1,18 +1,19 @@
 
 //校验用户是否登录的功能
 //路径中，并没有login.html
+if(location.href.indexOf("login.html") < 0){
+    $.ajax({
+        type: 'get',
+        url: '/employee/checkRootLogin',
+        success: function(data){
+            //console.log(data);
+            if(data.error == 400){
+                location.href = "login.html";
+            }
+        }
+    })
+}
 
-// $(document).ajaxStart(function(){
-//     //ajax调用开始时,显示进度条
-//     NProgress.start();
-// })
-//
-// $(document).ajaxStop(function(){
-//     //ajax请求成功后,结束进度条
-//     setTimeout(function(){
-//         NProgress.done();
-//     }, 500);
-// })
 
 //1. 登录进度条显示功能
 $(document).ajaxStart(function () {

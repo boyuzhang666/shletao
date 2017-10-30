@@ -50,8 +50,8 @@ $(function () {
     
     //2. 给表单注册一个校验成功的事件
     var validator = $("#login").data('bootstrapValidator');  //获取表单校验实例
+    // 表单校验插件初始化后可获取表单校验的validator实例，通过validator实例调用一些方法来完成某些功能。
     
-    // 初始化后可通过以下方法来获取表单校验的validator实例，通过validator实例调用一些方法来完成某些功能。
     $("#login").on('success.form.bv', function (e) {
         e.preventDefault();
         //使用ajax提交逻辑
