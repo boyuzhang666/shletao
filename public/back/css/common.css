@@ -117,3 +117,8 @@ a:link, a:visited, a:hover, a:active {
     width: 500px;
     height: 400px;
 }
+
+.lt_main table td {
+    text-align: center;
+    vertical-align: center;
+}
