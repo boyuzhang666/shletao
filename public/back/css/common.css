@@ -127,3 +127,19 @@ a:link, a:visited, a:hover, a:active {
     text-align: center;
     vertical-align: center;
 }
+
+.fileupload_box {
+    width: 82px;
+    height: 34px;
+    position: relative;
+}
+
+#fileupload {
+    width: 82px;
+    height: 34px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
