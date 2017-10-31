@@ -45,45 +45,41 @@ $(function () {
                 }
             }
         }
+        /*表单校验初始化后会触发success.form.bv*/
     });
     
-    // 表单校验插件初始化后可获取表单校验的validator实例，通过validator实例调用一些方法来完成某些功能。
-    var validator = $("#login").data('bootstrapValidator');
-    
-    //2. 提交按钮为[type='submit']时,点击提交后,执行func
-    $("#login").on('success.form.bv', function (e) {
-        //阻止表单默认提交
-        e.preventDefault();
+    //2. 给表单注册一个校验成功的事件 ,校验成功点击提交发送ajax...
+    var validator = $("#login").data('bootstrapValidator');  //获取表单校验实例
+ 
+    $("[type='button']").on('click', function (e) {
+        //e.preventDefault();
         //使用ajax提交逻辑
-        var $form = $(e.target);
+        //var $form = $(e.target);
         $.ajax({
             type: "post",
             url: "/employee/employeeLogin",
-            data: $form.serialize(),
+            data: $('#login').serialize(),
             dataType: "json",
             success: function (data) {
                 console.log(data);
                 if (data.success) {
                     location.href = "index.html";
                 } else {
-
                     if (data.error == 1000) {
                         validator.updateStatus('username', 'INVALID', 'callback');
                     }
                     if (data.error == 1001) {
                         validator.updateStatus('password', 'INVALID', 'callback');
                     }
-
+                    
                 }
             }
         })
     });
-
+    
     //3. 表单重置功能
-    $("[type='reset']").on('click', function () {
+    $("[type='reset']").on('click', function(){
         validator.resetForm();
     })
-    
-    
     
 })
