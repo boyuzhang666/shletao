@@ -1,6 +1,11 @@
 .mt150 {
     margin-top: 150px;
 }
+
+.mb20{
+    margin-bottom: 20px;
+}
+
 ul{
     margin: 0;
     padding: 0;
