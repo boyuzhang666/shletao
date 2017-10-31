@@ -70,8 +70,12 @@ $(function () {
             success:function(data){
                 if(data.success){
                     $('#addModal').modal('hide');
+                    currentPage = 1;
                     render();
                 }
+                //重置表单(再次添加时,清除表单内) 清除验证图标
+                $('#form')[0].reset();
+                $('#form').data('bootstrapValidator').resetForm();
             }
             
         })
