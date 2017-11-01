@@ -4,7 +4,7 @@ $(function () {
     //发送ajax请求，获取后台的数据
     //  页号 每页数据条数
     var currentPage = 1;
-    var pageSize = 5;
+    var pageSize = 30;
     
     function render() {
         $.ajax({

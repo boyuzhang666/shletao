@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+html,body{
+    height: 100%;
+}
+
+.lt_container {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    max-width: 640px;
+    min-width: 320px;
+    margin: 0 auto;
+    padding-top:45px;
+    padding-bottom: 55px;
+}
+
+/*header*/
+.lt_header{
+    width: 100%;
+    height: 45px;
+    min-width: 320px;
+    max-width: 640px;
+    background-color: #069;
+    position: fixed;
+    top: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+.lt_header .icon_left,
+.lt_header .icon_right {
+    display: block;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    position: absolute;
+    top: 0;
+    text-align: center;
+}
+
+.lt_header .icon-left {
+    left: 0;
+}
+.lt_header .icon_right {
+    right: 0;
+}
+
+.lt_header span {
+    color: #fff;
+}
+.lt_header h4 {
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    font-weight: 400;
+    margin: 0;
+}
+
+/*content*/
+.lt_content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/*footer*/
+.lt_footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 640px;
+    min-width: 320px;
+    height: 55px;
+    background-color: #069;
+    z-index: 998;
+}
+
+.lt_footer li {
+    width: 25%;
+    float: left;
+    text-align: center;
+    padding-top:10px;
+}
+
+.lt_footer p{
+    color: #fff;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.lt_footer li a {
+    color: #fff;
+}
+
+.lt_footer li.now p{
+    color: darkorange;
+}
+.lt_footer li.now a{
+    color: darkorange;
+}
+
+/*product*/
+.lt_product {
+    padding: 10px;
+}
+.lt_product .item {
+    display: block;
+    width: 48%;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    float: left;
+}
+
+.lt_product .item:nth-child(odd){
+    margin-right: 4%;
+}
+
+.lt_product p span:first-child {
+    color:red;
+}
+
+.lt_product p span:nth-child(2){
+    text-decoration: line-through;
+    color: #8f8f94;
+}
+
+.lt_product img {
+    display: block;
+    width: 100%;
+}
+

@@ -25,9 +25,10 @@ a:link, a:visited, a:hover, a:active {
     width: 180px;
     height: 100%;
     background: #222d32;
-    position: absolute;
+    position: fixed;
     left: 0;
     transition: all 1s;
+    z-index: 999;
 }
 
 .lt_aside.now{
@@ -98,10 +99,15 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .lt_header {
+    width: 100%;
     height: 50px;
     line-height: 50px;
-    padding: 0 20px;
+    padding: 0 20px 0 200px;
     background-color: #367fa9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
 }
 
 .lt_header a span {
