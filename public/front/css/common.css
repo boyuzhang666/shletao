@@ -139,3 +139,10 @@ html,body{
     width: 100%;
 }
 
+.emptyHistory,
+.fa-close
+{
+    cursor: pointer;
+}
+
+

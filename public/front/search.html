@@ -28,22 +28,14 @@
                 <!--搜索输入-->
                 <div class="lt_search">
                     <input type="text" name="" placeholder="请输入搜索关键字">
-                    <button class="mui-btn-blue">搜索</button>
+                    <button class="search_btn mui-btn-blue">搜索</button>
                 </div>
                 
                 <!--搜索记录展示-->
                 <div class="lt_history">
-                    <div class="title mui-clearfix">
-                        <span class="mui-pull-left">搜索历史</span>
-                        <span class="mui-pull-right fa fa-trash">清空记录</span>
-                    </div>
-                    <ul class="content">
-                        
-                        <!--<li><a href="">NIKE</a><span class="mui-pull-right fa fa-close"></span></li>-->
-                    </ul>
-                    
+                    <!--模板渲染搜索记录-->
                 </div>
-                
+            
             </div>
         </div>
     </div>
@@ -65,22 +57,31 @@
 
 <script type="text/html" id="tpl1">
     {{each rows v i}}
-    <li  data-id='{{v.id}}' class="{{i==0?'now':''}}"><a href="javascript:;">{{v.categoryName}}</a></li>
+    <li data-id='{{v.id}}' class="{{i==0?'now':''}}"><a href="javascript:;">{{v.categoryName}}</a></li>
     {{/each}}
-
 </script>
 
-<!--二级分类渲染模板-->
-<script type="text/html" id="tpl2">
-    {{if rows.length==0}}
-    <p>暂无相关商品信息</p>
+<!--搜索记录渲染模板-->
+<script type="text/html" id="tpl">
+    {{if arr.length==0}}
+    <p>暂无搜索历史记录信息</p>
+    {{else if arr.length>0}}
+    <div class="title mui-clearfix">
+        <span class="mui-pull-left">搜索历史</span>
+        <span class="emptyHistory mui-pull-right fa fa-trash">清空记录</span>
+    </div>
+    <ul class="content">
+        {{each arr v i}}
+        <!--每个li自定义属性存储i,删除时来获取-->
+        <li data-index="{{i}}"><a href="">{{v}}</a><span class="mui-pull-right fa fa-close"></span></li>
+        {{/each}}
+    </ul>
     {{/if}}
-    {{each rows v i}}
-    <li><a href="javascript:;"><img src="{{v.brandLogo}}"><p>{{v.brandName}}</p></a></li>
-    {{/each}}
 </script>
 
-<script src="lib/jquery/jquery.min.js"></script>
+
+
+
 <script src="lib/mui/js/mui.min.js"></script>
 <script src="lib/zepto/zepto.min.js"></script>
 <script src="lib/artTemplate/template-web.js"></script>
