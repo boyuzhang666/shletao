@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>乐淘分类</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="lib/mui/css/mui.css">
+    <link rel="stylesheet" href="lib/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/searchList.css">
+</head>
+<body>
+<div class="lt_container">
+    <!--头部-->
+    <div class="lt_header">
+        <a href="javascript:history.go(-1);" class="icon_left"><span class="fa fa-chevron-left"></span></a>
+        <h4>商品详情</h4>
+        <a href="javascript:location.reload();" class="icon_right"><span class="mui-icon mui-icon-reload"></span></a>
+    </div>
+    
+    <!--内容-->
+    <div class="lt_content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+    
+                <!--轮播-->
+                <div class="mui-slider">
+                    <div class="mui-slider-group mui-slider-loop">
+                        <!--第一个内容区容器-->
+            
+                        <div class="mui-slider-item mui-slider-item-duplicate">
+                            <a href=""><img src="images/banner6.png" alt=""></a>
+                        </div>
+                        <div class="mui-slider-item">
+                            <a href=""><img src="images/banner1.png" alt=""></a>
+                        </div>
+                        <div class="mui-slider-item">
+                            <a href=""><img src="images/banner2.png" alt=""></a>
+                        </div>
+                        <div class="mui-slider-item">
+                            <a href=""><img src="images/banner3.png" alt=""></a>
+                        </div>
+                        <div class="mui-slider-item">
+                            <a href=""><img src="images/banner4.png" alt=""></a>
+                        </div>
+                        <div class="mui-slider-item">
+                            <a href=""><img src="images/banner5.png" alt=""></a>
+                        </div>
+                        <div class="mui-slider-item">
+                            <a href=""><img src="images/banner6.png" alt=""></a>
+                        </div>
+                        <div class="mui-slider-item  mui-slider-item-duplicate">
+                            <a href=""><img src="images/banner1.png" alt=""></a>
+                        </div>
+                    </div>
+                    <!--圆点-->
+                    <div class="mui-slider-indicator">
+                        <div class="mui-indicator mui-active"></div>
+                        <div class="mui-indicator"></div>
+                        <div class="mui-indicator"></div>
+                        <div class="mui-indicator"></div>
+                        <div class="mui-indicator"></div>
+                        <div class="mui-indicator"></div>
+                    </div>
+                </div>
+
+                
+            
+            </div>
+        </div>
+    </div>
+    
+    <!--底部-->
+    <div class="lt_footer">
+        <ul class="mui-clearfix">
+            <li><a href="index.html"><span class="fa fa-home"></span>
+                <p>首页</p></a></li>
+            <li><a href="category.html"><span class="fa fa-bars"></span>
+                <p>分类</p></a></li>
+            <li><a href="cart.html"><span class="fa fa-shopping-cart"></span>
+                <p>购物车</p></a></li>
+            <li><a href="vip.html"><span class="fa fa-user"></span>
+                <p>会员</p></a></li>
+        </ul>
+    </div>
+</div>
+
+<!--商品列表渲染模板-->
+<script type="text/html" id="tpl">
+    {{if data.length==0}}
+    <p>暂无相关商品信息</p>
+    {{/if}}
+    
+    {{each data v i}}
+    <a href="product.html?productId={{v.id}}" class="item">
+        <img src="{{v.pic[0].picAddr}}">
+        <p class="mui-ellipsis-2">{{v.proName}}</p>
+        <p>
+            <span>&yen;{{v.price}}</span>
+            <span>&yen;{{v.oldPrice}}</span>
+        </p>
+        <button class="mui-btn-blue">立即购买</button>
+    </a>
+    {{/each}}
+</script>
+
+
+
+
+
+<script src="lib/mui/js/mui.min.js"></script>
+<script src="lib/zepto/zepto.min.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/product.js"></script>
+</body>
+</html>

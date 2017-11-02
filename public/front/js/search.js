@@ -49,7 +49,7 @@ $('.lt_history').on('click', 'li', function () {
 })
 
 //4. 添加功能
-//① 点击搜索 添加分类
+//① 点击搜索按钮 添加搜索记录 页面跳转
 $('.search_btn').on('click', function () {
     var search_text = $(this).prev().val().trim();
     //如果输入内容为空,给出温馨提示
@@ -71,5 +71,7 @@ $('.search_btn').on('click', function () {
     arr.unshift(search_text);
     localStorage.setItem('lt_search_history', JSON.stringify(arr));
     render();
+    //页面跳转
+    location.href = "searchList.html?key=" + search_text;
 })
     
