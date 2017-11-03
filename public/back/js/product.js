@@ -57,7 +57,6 @@ $(function () {
                 }
             },
             proDesc: {
-                /*规则*/
                 validators: {
                     notEmpty: {
                         message: '请输入商品描述'
@@ -65,7 +64,6 @@ $(function () {
                 }
             },
             num: {
-                /*规则*/
                 validators: {
                     notEmpty: {
                         message: '请输入商品描述'
@@ -77,7 +75,6 @@ $(function () {
                 }
             },
             size: {
-                /*规则*/
                 validators: {
                     notEmpty: {
                         message: '请输入商品尺码'
@@ -89,7 +86,6 @@ $(function () {
                 }
             },
             oldPrice: {
-                /*规则*/
                 validators: {
                     notEmpty: {
                         message: '请输入商品原价'
@@ -97,7 +93,6 @@ $(function () {
                 }
             },
             price: {
-                /*规则*/
                 validators: {
                     notEmpty: {
                         message: '请输入商品折扣价'
@@ -105,7 +100,6 @@ $(function () {
                 }
             },
             brandId: {
-                /*规则*/
                 validators: {
                     notEmpty: {
                         message: '请选择二级分类'
@@ -153,11 +147,15 @@ $(function () {
         dataType: 'json',
         //当文件上传成功,会执行这个回调函数
         done: function (e, data) {
-            //console.log(data.result);
+            console.log(data.result);
             $('.img_box').append('<img src="' + data.result.picAddr + '" width="100" height="100">');
             imgArray.push(data.result);
-            //设置--上传图片--校验通过
-            $form.data('bootstrapValidator').updateStatus("productLogo", "VALID");
+            // 上传三张图片 校验通过
+            if (imgArray.length === 3) {
+                $form.data("bootstrapValidator").updateStatus("productLogo", "VALID");
+            } else {
+                $form.data("bootstrapValidator").updateStatus("productLogo", "INVALID");
+            }
         }
     });
     
@@ -168,15 +166,17 @@ $(function () {
         // console.log(param);
         // brandId=12&proName=123&proDesc=123&num=123&size=30-45&oldPrice=999&price=998&productLogo=
         //拼接接口所需所有参数
-        param += '&pic1Name=' + imgArray[0].picName + '&pic1Addr='+ imgArray[0].picAddr;
-        param += '&pic2Name=' + imgArray[1].picName + '&pic2Addr='+ imgArray[1].picAddr;
-        param += '&pic3Name=' + imgArray[2].picName + '&pic3Addr='+ imgArray[2].picAddr;
+        param += "&picName1="+imgArray[0].picName+"&picAddr1="+imgArray[0].picAddr;
+        param += "&picName2="+imgArray[1].picName+"&picAddr2="+imgArray[1].picAddr;
+        param += "&picName3="+imgArray[2].picName+"&picAddr3="+imgArray[2].picAddr;
+        
         $.ajax({
             type: 'post',
             url: '/product/addProduct',
             data: param,
             success: function (data) {
                 if(data.success){
+                    console.log(data);
                     $('#addModal').modal('hide');
                     currentPage = 1;
                     render();

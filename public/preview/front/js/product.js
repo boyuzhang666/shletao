@@ -8,7 +8,6 @@ $(function () {
   })
 
 
-
   //首先，获取到id
   var id = tools.getParam("productId");
   $.ajax({

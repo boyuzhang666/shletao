@@ -12,15 +12,17 @@ var tools = {
         var search = location.search;
         search = search.slice(1);
         var arr = search.split("&");
-        for (var i = 0; i < arr.length; i++) {
-            var key = arr[i].split("=")[0];
-            var value = decodeURI(arr[i].split("=")[1]);
+
+        arr.forEach(function (cv, i) {
+            var key = cv.split('=')[0],
+                value = decodeURI(cv.split('=')[1]);
+            //encodeURI decodeURI URI中的中文会被encodeURI 需用decodeURI转换
             obj[key] = value;
-        }
-        //this指向的是谁：  4种调用模式
+        })
         return obj;
     },
     getParam:function (key) {
+        //param key type[string]
         return this.getParamObj()[key];
     }
 }

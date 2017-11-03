@@ -17,7 +17,7 @@ $(function () {
             url: '/product/queryProduct',
             data: data,
             success: function (data) {
-                // console.log(data);
+                 console.log(data);
                 // 显示搜索loading效果,1s后再渲染
                 setTimeout(function () {
                     $('.lt_product').html(template('tpl', data));
@@ -29,23 +29,32 @@ $(function () {
     //获取地址栏传入参数 , 赋给ajax请求中的传入数据data对象中的proName
     data.proName = tools.getParam("key");
     $('.search_input').val(data.proName);
+    $('.lt_product').html('<div class="loading"></div>');
     render(data);
     
     //点击搜索按钮 把lt_sort下的a的所有now类去掉
     $('.search_btn').on('click', function () {
-        // var key = $(this).prev().val();
+
         // 所有a的now类去掉 价格和库存的箭头重置
         $('.lt_sort a').removeClass('now');
         $('.lt_sort span').removeClass('fa-angle-up').addClass('fa-angle-down');
         // 获取搜索框文本
         var key = $('.search_input').val().trim();
+        console.log(key);
         if(key == ""){
             mui.toast('请输入搜索内容');
         }
-        //搜索效果
+        //搜索进度效果
         $('.lt_product').html('<div class="loading"></div>')
-        data.ProName = key;
+        data.proName = key;
         render(data);
+    })
+    
+    //Enter键搜索
+    $(document).on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            $('.search_btn').trigger('click');
+        }
     })
     
     //点击价格和库存排序功能

@@ -1,3 +1,5 @@
+
+
 mui(".mui-scroll-wrapper").scroll({
     indicators: false
 });
@@ -17,7 +19,6 @@ function getHistory() {
 function render() {
     $('.lt_history').html(template('tpl', {arr: getHistory()}));
 }
-
 render();
 
 //2. 清空功能: 点击清空记录,清空搜索记录-清空localStorage,emptyHistory为动态渲染的,所以要注册事件委托
@@ -71,7 +72,13 @@ $('.search_btn').on('click', function () {
     arr.unshift(search_text);
     localStorage.setItem('lt_search_history', JSON.stringify(arr));
     render();
-    //页面跳转
+    //页面跳转!!!
     location.href = "searchList.html?key=" + search_text;
 })
-    
+
+//Enter键搜索
+$(document).on('keyup', function (e) {
+    if (e.keyCode == 13) {
+        $('.search_btn').trigger('click');
+    }
+})

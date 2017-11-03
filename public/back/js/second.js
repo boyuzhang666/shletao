@@ -34,7 +34,7 @@ $(function () {
     }
     render();
     
-    //表单校验
+    //bootstrapValidator init
     var $form = $("#form");
     $form.bootstrapValidator({
         //默认不校验的配置
@@ -90,9 +90,9 @@ $(function () {
     //选择一级分类,把内容填入 注册事件委托
     $('.dropdown-menu').on('click', 'a', function () {
         //选择后显示分类名
-        $('.dropdown-text').html($(this).html());
+        $('.dropdown-text').html( $(this).html() );
         //categoryId填入隐藏域value
-        $('#categoryId').val($(this).data('id'));
+        $('#categoryId').val( $(this).data('id') );
         //设置校验通过
         $form.data('bootstrapValidator').updateStatus("categoryId", "VALID");
     })
