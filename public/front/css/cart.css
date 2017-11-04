@@ -1,0 +1,41 @@
+
+/*使宽度继承*/
+.mui-table-cell {
+    display: block;
+}
+
+.cart_left {
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+
+.cart_left img{
+    width: 60px;
+    height: 60px;
+    /*display: block;*/
+}
+
+.cart_right {
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+.proName {
+    color: #333;
+    height: 42px;
+}
+
+.price_info .price{
+    color: red;
+    font-size: 16px;
+}
+
+.price_info .oldPrice {
+    text-decoration: line-through;
+    font-size:12px;
+}
+
+.price_info .num{
+    float: right;
+}

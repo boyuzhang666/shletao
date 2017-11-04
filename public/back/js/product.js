@@ -1,7 +1,7 @@
 $(function () {
     var currentPage = 1,
-        pageSize = 3;
-    var $form = $('#form');
+        pageSize = 3,
+        $form = $('#form');
     
     //数据渲染
     function render() {
@@ -32,7 +32,6 @@ $(function () {
             }
         });
     }
-    
     render();
     
     //校验
@@ -166,16 +165,16 @@ $(function () {
         // console.log(param);
         // brandId=12&proName=123&proDesc=123&num=123&size=30-45&oldPrice=999&price=998&productLogo=
         //拼接接口所需所有参数
-        param += "&picName1="+imgArray[0].picName+"&picAddr1="+imgArray[0].picAddr;
-        param += "&picName2="+imgArray[1].picName+"&picAddr2="+imgArray[1].picAddr;
-        param += "&picName3="+imgArray[2].picName+"&picAddr3="+imgArray[2].picAddr;
+        param += "&picName1=" + imgArray[0].picName + "&picAddr1=" + imgArray[0].picAddr;
+        param += "&picName2=" + imgArray[1].picName + "&picAddr2=" + imgArray[1].picAddr;
+        param += "&picName3=" + imgArray[2].picName + "&picAddr3=" + imgArray[2].picAddr;
         
         $.ajax({
             type: 'post',
             url: '/product/addProduct',
             data: param,
             success: function (data) {
-                if(data.success){
+                if (data.success) {
                     console.log(data);
                     $('#addModal').modal('hide');
                     currentPage = 1;

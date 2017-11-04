@@ -8,6 +8,7 @@ $(function () {
   })
 
 
+
   //首先，获取到id
   var id = tools.getParam("productId");
   $.ajax({
@@ -17,7 +18,6 @@ $(function () {
       id:id
     },
     success:function (data) {
-      console.log(data);
       var temp = data.size.split("-");
       var sizeArray = [];
       for(var i = temp[0]; i <= temp[1]; i++){
@@ -39,5 +39,48 @@ $(function () {
 
     }
   });
+
+
+  //尺码选择功能
+  $(".mui-scroll").on("click", ".size", function () {
+    $(this).addClass("now").siblings().removeClass("now");
+  });
+
+
+
+  //添加到购物车功能
+  $(".btn_add_cart").on("click", function () {
+    //获取数据
+    var size = $(".size.now").html();
+    var num = $(".mui-numbox-input").val();
+
+    if(!size){
+      mui.toast("请选择尺码");
+      return;
+    }
+
+    //才发送ajax请求
+    $.ajax({
+      type:"post",
+      url:"/cart/addCart",
+      data:{
+        productId:id,
+        num:num,
+        size:size
+      },
+      success:function (data) {
+
+        if(data.success){
+          mui.toast("添加成功了,");
+        }
+        if(data.error === 400){
+          //跳转到login页面
+          location.href = "login.html?retUrl="+location.href;
+        }
+
+      }
+    });
+
+  })
 
 })

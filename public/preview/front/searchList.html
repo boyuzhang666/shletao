@@ -88,7 +88,16 @@
 
   {{each data v i}}
   <a href="product.html?productId={{v.id}}" class="item">
+
+    <!--v.pic下的0下标的addr属性  v.pic是一个空数组 v.pic[0]undefined  .picAddr -->
+    {{if v.pic.length === 0}}
+    <img src="images/none.png" alt="">
+    {{/if}}
+    {{if v.pic.length > 0}}
     <img src="{{v.pic[0].picAddr}}" alt="">
+    {{/if}}
+
+
     <p class="mui-ellipsis-2">{{v.proName}}</p>
     <p>
       <span>&yen;{{v.price}}</span>

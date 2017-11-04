@@ -1,5 +1,3 @@
-
-
 mui(".mui-scroll-wrapper").scroll({
     indicators: false
 });
@@ -19,6 +17,7 @@ function getHistory() {
 function render() {
     $('.lt_history').html(template('tpl', {arr: getHistory()}));
 }
+
 render();
 
 //2. 清空功能: 点击清空记录,清空搜索记录-清空localStorage,emptyHistory为动态渲染的,所以要注册事件委托
@@ -32,10 +31,13 @@ $('.lt_history').on('click', '.emptyHistory', function () {
 // 为每个li注册点击事件, 通过获取点击的那一条Li, 在localStorage中删除该索引的记录
 $('.lt_history').on('click', 'li', function () {
     //确认框
-    var btnArray = ['确认', '取消'];
+    var btnArray = ['确认', '取消'],
+        _this = $(this);
     mui.confirm('确认要删除本条搜索记录吗?', "注意", btnArray, function (data) {
         if (data.index == 0) {
-            var index = $(this).data('index');
+            index = _this.data('index');
+            //index = $(this).data('index');
+            console.log(index);
             var arr = getHistory();
             arr.splice(index, 1);
             var newArr = JSON.stringify(arr);
@@ -65,7 +67,7 @@ $('.search_btn').on('click', function () {
     if (index > -1) {
         arr.splice(index, 1);
     }
-    //如果条数大于10,删除最后一条 //array.  unshift push shift pop
+    //如果条数大于10,删除最后一条 //array.unshift push shift pop
     if (arr.length >= 10) {
         arr.pop();
     }
@@ -77,7 +79,7 @@ $('.search_btn').on('click', function () {
 })
 
 //Enter键搜索
-$(document).on('keyup', function (e) {
+$('.lt_search input').on('keyup', function (e) {
     if (e.keyCode == 13) {
         $('.search_btn').trigger('click');
     }

@@ -36,3 +36,7 @@
     background-color: #eee;
     padding:10px;
 }
+
+.size span.now{
+    background-color: darkorange;
+}
