@@ -1,0 +1,38 @@
+
+.banner {
+  width:100%;
+  height:330px;
+  position: relative;
+}
+.product {
+  padding: 10px;
+}
+.product li {
+  float: left;
+  width:33.33%;
+}
+.goods {
+  width:100%;
+  padding:10px;
+}
+.goods li {
+  float: left;
+  width:48%;
+  background-color: #fff;
+  border:1px solid #ccc;
+  margin-bottom:10px;
+  padding-bottom:10px;
+}
+.goods li:nth-child(odd){
+  margin-right:2%;
+}
+.goods a {
+  display: block;
+  text-align: center;
+}
+.goods p span:first-child {
+  color: red;
+}
+.goods p span:last-child {
+  text-decoration: line-through;
+}

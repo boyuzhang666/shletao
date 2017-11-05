@@ -1,0 +1,33 @@
+
+.history {
+  width:100%;
+  padding:10px;
+}
+.history .title {
+  font-size:12px;
+  position: relative;
+  width:100%;
+  color: #666;
+}
+.title span:first-child {
+  float: left;
+}
+.title span:last-child {
+  float: right;
+  padding-left:20px;
+}
+.content_list {
+  width:100%;
+  font-size:12px;
+}
+.content_list li {
+  height:30px;
+  line-height:30px;
+  border-top:1px dashed #ccc;
+  border-left:1px dashed #ccc;
+  border-right:1px dashed #ccc;
+  padding-left:10px;
+}
+.content_list li:last-child {
+  border-bottom:1px dashed #ccc;
+}

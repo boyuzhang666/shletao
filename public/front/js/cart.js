@@ -39,7 +39,8 @@ $(function () {
         var _this = $(this),
             id = _this.data('id'),
             confirmArray = ["确定", "取消"];
-
+        console.log(id);
+    
         mui.confirm('确定要将该商品从购物车中删除吗?', '提示', confirmArray, function (e) {
             //确定-发送ajax 刷新列表
             if (e.index === 0) {
@@ -47,7 +48,7 @@ $(function () {
                     type: 'get',
                     url: '/cart/deleteCart',
                     data: {
-                        id: id
+                        id: [id]
                     },
                     success: function (data) {
                         //ajax数据完全返回后 检测用户是否已登录
@@ -78,23 +79,51 @@ $(function () {
         var confirmArray = ['确定', '取消'],
             data = this.dataset,
             html = template('confirmBox', data);
+        html = html.replace(/\n/g, '');
         // console.log(html);
+        
+        var _this = $(this);
         mui.confirm(html, "提示", confirmArray, function (e) {
-            if(e.index === 0) {
-                console.log(e.index);
-            }
-        })
+            
+            if (e.index === 1) {
+                mui.toast('操作取消');
+            } else {
+                $.ajax({
+                    type: 'post',
+                    url: '/cart/updateCart',
+                    data: {
+                        id: data.id,
+                        size: $('.edit_size span.now').html(),
+                        num: $('.edit_num .mui-numbox-input').val()
+                    },
+                    success: function (data) {
+                        if(data.success) {
+                            mui('.mui-scroll-wrapper').pullRefresh().pulldownLoading();
+                        }else{
+                            mui.toast(data.message);
+                        }
+                    }
 
-        
-        
+                })
+            }
+        });
+        //弹出后 渲染数字输入框
+        mui('.mui-numbox').numbox();
     });
     
+    //4. 点击尺码 添加now类
+    $('body').on('tap', '.edit_size span', function () {
+        $(this).addClass('now').siblings().removeClass('now');
+    });
     
-    
-    
-    
-    
-    
-    
+    //5. checkbox勾选事件 计算订单总金额
+    $('#OA_task_2').on('change', '.ck', function () {
+        var totalPrice = 0;
+        $(':checked').each(function (i,ele) {
+            //ele: DOM对象
+            totalPrice += $(ele).data('price') * $(ele).data('num');
+        });
+        $('.cart_price span').html(totalPrice);
+    })
     
 });

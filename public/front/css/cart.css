@@ -39,3 +39,39 @@
 .price_info .num{
     float: right;
 }
+
+.edit_size span {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 5px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.edit_size span.now{
+    background-color: #069;
+}
+
+.edit_num {
+    text-align: left;
+}
+
+.cart_price {
+    width: 100%;
+    padding:0 5px;
+    max-width:640px;
+    min-width: 320px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    bottom: 55px;
+    z-index: 999;
+    color: red;
+    background-color: #eee;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.cart_price a{
+    float: right;
+}

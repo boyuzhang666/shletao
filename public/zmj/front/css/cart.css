@@ -1,0 +1,58 @@
+.container {
+  padding-bottom: 82px;
+}
+.lt_total {
+  background-color: #eee;
+  height:30px;
+  line-height:30px;
+  width:100%;
+  padding-left:10px;
+}
+.pro_img {
+  width:60px;
+  height:60px;
+}
+.line_right {
+  margin-left:80px;
+}
+.line_right p:first-child {
+  height:50px;
+  padding-bottom:15px;
+  line-height:30px;
+  color: #333;
+}
+input[type='checkbox'] {
+  position: absolute;
+  left:15px;
+  bottom:16px;
+  width:20px;
+  height:20px;
+}
+.price {
+  color: red;
+}
+.old_price {
+  text-decoration: line-through;
+}
+.line_right p:nth-child(2) {
+  height:30px;
+  line-height:30px;
+}
+.mui-table-cell {
+  display: block;
+}
+.confirm_size {
+  text-align: left;
+  margin-top:20px;
+}
+.confirm_size span {
+  border: 1px solid #ccc;
+  padding:5px;
+}
+.confirm_size span.active {
+  background-color: #069;
+}
+.confirm_mun {
+  margin-top:20px;
+  text-align: left;
+}
